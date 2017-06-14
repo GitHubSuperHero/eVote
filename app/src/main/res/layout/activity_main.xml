@@ -20,19 +20,17 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/editUsername"
         android:hint="Username"
         android:layout_marginTop="15dp"
-        android:padding="5dp" />
+        android:padding="5dp"
+        android:layout_height="50dp" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:inputType="textPassword"
-        android:ems="10"
         android:id="@+id/editPassword"
         android:hint="Password"
         android:padding="5dp"
@@ -71,7 +69,6 @@
     <Button
         android:text="Entrar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/buttonLogin" />
 
 </LinearLayout>
