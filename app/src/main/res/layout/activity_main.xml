@@ -69,6 +69,8 @@
     <Button
         android:text="Entrar"
         android:layout_width="match_parent"
-        android:id="@+id/buttonLogin" />
+        android:id="@+id/buttonLogin"
+        android:textColorLink="@color/colorAccent"
+        android:layout_height="60dp" />
 
 </LinearLayout>
