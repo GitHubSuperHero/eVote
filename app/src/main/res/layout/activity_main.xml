@@ -71,6 +71,7 @@
         android:layout_width="match_parent"
         android:id="@+id/buttonLogin"
         android:textColorLink="@color/colorAccent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:onClick="onButtonClick" />
 
 </LinearLayout>
