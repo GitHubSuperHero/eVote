@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListaEleicoesActivity" />
-        <activity android:name=".CreditsActivity"></activity>
+        <activity android:name=".CreditsActivity" />
+        <activity android:name=".EleicaoDetalhes"></activity>
     </application>
 
 </manifest>

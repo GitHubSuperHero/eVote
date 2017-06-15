@@ -6,14 +6,18 @@ import java.util.Date;
 
 public class EleicaoObj {
 
+    private int id;
     private String name;
     private Uri image;
     private Date timeLimit;
+    private boolean inscrito;
 
-    EleicaoObj(String name, Uri image, Date timeLimit){
+    EleicaoObj(int id, String name, Uri image, Date timeLimit){
         this.setName(name);
         this.setImage(image);
         this.setTimeLimit(timeLimit);
+
+        this.setInscrito(false);
 
     }
 
@@ -39,5 +43,21 @@ public class EleicaoObj {
 
     public void setTimeLimit(Date timeLimit) {
         this.timeLimit = timeLimit;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isInscrito() {
+        return inscrito;
+    }
+
+    public void setInscrito(boolean inscrito) {
+        this.inscrito = inscrito;
     }
 }
