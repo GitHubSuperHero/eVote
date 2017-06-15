@@ -13,14 +13,14 @@
     tools:context="pt.evote.evote.MainActivity">
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_evote"
         android:id="@+id/imageViewLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/logo"
-        android:scaleType="fitXY"
-        android:layout_margin="16dp" />
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_evote" />
 
     <EditText
         android:layout_width="match_parent"
