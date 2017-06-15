@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder> {
+class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder> {
 
     private ArrayList<EleicaoObj> mEleicao;
 
-    public static class EleicaoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class EleicaoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private EleicaoObj mEleicao;
 
@@ -26,7 +26,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Eleica
 
         private static final String ELEICAO_KEY = "ELEICAO";
 
-        public EleicaoHolder(View v) {
+        EleicaoHolder(View v) {
             super(v);
 
             mItemName = (TextView) v.findViewById(R.id.textNameView);
@@ -46,7 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Eleica
         }
 
 
-        public void bindEleicao(EleicaoObj eleicao) {
+        void bindEleicao(EleicaoObj eleicao) {
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
             mItemDate.setText(mEleicao.getTimeLimit().toString());
@@ -54,7 +54,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Eleica
         }
     }
 
-    public RecyclerAdapter(ArrayList<EleicaoObj> eleicaos) {
+    RecyclerAdapter(ArrayList<EleicaoObj> eleicaos) {
         mEleicao = eleicaos;
     }
 
