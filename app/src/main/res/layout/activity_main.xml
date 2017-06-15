@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:orientation="vertical"
@@ -11,18 +12,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="pt.evote.evote.MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="eVote Logo"
-        android:gravity="center"
-        android:layout_marginTop="20dp" />
+        app:srcCompat="@drawable/ic_evote"
+        android:id="@+id/imageViewLogo"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/logo"
+        android:layout_margin="16dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:inputType="textPersonName"
         android:id="@+id/editUsername"
-        android:hint="Username"
+        android:hint="@string/username"
         android:layout_marginTop="15dp"
         android:padding="5dp"
         android:layout_height="50dp" />
@@ -32,7 +36,7 @@
         android:layout_height="50dp"
         android:inputType="textPassword"
         android:id="@+id/editPassword"
-        android:hint="Password"
+        android:hint="@string/password"
         android:padding="5dp"
         android:layout_marginTop="5dp" />
 
@@ -44,34 +48,45 @@
         android:layout_marginBottom="20dp">
 
         <TextView
-            android:text="Registar Aqui"
+            android:text="@string/registar_aqui"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
-            android:paddingRight="5dp" />
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:gravity="end" />
 
         <TextView
-            android:text="|"
+            android:text="@string/bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center" />
 
         <TextView
-            android:text="Esqueci a Password"
+            android:text="@string/esqueci_a_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="5dp" />
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="start" />
 
     </LinearLayout>
 
     <Button
-        android:text="Entrar"
+        android:text="@string/entrar"
         android:layout_width="match_parent"
         android:id="@+id/buttonLogin"
         android:textColorLink="@color/colorAccent"
         android:layout_height="60dp"
         android:onClick="onButtonClick" />
+
+    <TextView
+        android:text="@string/sobre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView5"
+        android:gravity="bottom|end"
+        android:onClick="onAboutClick" />
 
 </LinearLayout>

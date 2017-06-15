@@ -18,4 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListaEleicoesActivity.class);
         startActivity(intent);
     }
+
+    public void onAboutClick(View v) {
+        Intent intent = new Intent(this, CreditsActivity.class);
+        startActivity(intent);
+    }
 }
