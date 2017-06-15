@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -18,8 +18,8 @@
         app:srcCompat="@drawable/ic_evote"
         android:id="@+id/imageViewLogo"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
         android:contentDescription="@string/logo"
+        android:scaleType="fitXY"
         android:layout_margin="16dp" />
 
     <EditText
@@ -29,7 +29,8 @@
         android:hint="@string/username"
         android:layout_marginTop="15dp"
         android:padding="5dp"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:layout_below="@id/imageViewLogo"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -38,40 +39,8 @@
         android:id="@+id/editPassword"
         android:hint="@string/password"
         android:padding="5dp"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
-
-        <TextView
-            android:text="@string/registar_aqui"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:gravity="end" />
-
-        <TextView
-            android:text="@string/bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center" />
-
-        <TextView
-            android:text="@string/esqueci_a_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:gravity="start" />
-
-    </LinearLayout>
+        android:layout_below="@+id/editUsername"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/entrar"
@@ -79,13 +48,51 @@
         android:id="@+id/buttonLogin"
         android:textColorLink="@color/colorAccent"
         android:layout_height="60dp"
-        android:onClick="onButtonClick" />
+        android:onClick="onButtonClick"
+        android:layout_below="@id/editPassword"/>
+
+    <LinearLayout
+        android:id="@+id/smallLinksLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/buttonLogin"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/textViewRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/registar_aqui" />
+
+        <TextView
+            android:id="@+id/textViewForgotPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/esqueci_a_password" />
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:onClick="onAboutClick"
         android:text="@string/sobre" />
 
-</LinearLayout>
+</RelativeLayout>
+
+
+
+
