@@ -11,4 +11,11 @@
     <string name="textview">TextView</string>
     <string name="icon_credits">Check Box Icon made by Freepik from www.flaticon.com</string>
     <string name="sobre">Sobre</string>
+    <string name="menu_noticias">Notícias</string>
+    <string name="menu_candidados">Candidatos</string>
+    <string name="menu_campanha">Campanha</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="icon_credits2">Campaigning Icon made by Freepik from www.flaticon.com</string>
 </resources>
