@@ -1,7 +1,6 @@
 package pt.evote.evote;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-import java.util.Calendar;
 import pt.evote.evote.Fragments.CampanhaFragment;
 import pt.evote.evote.Fragments.CandidatosFragment;
 import pt.evote.evote.Fragments.NoticiasFragment;
@@ -22,8 +20,7 @@ public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragme
 
     private static final String ELEICAO_KEY = "ELEICAO";
     private static final String SELECTED_ITEM = "arg_selected_item";
-    int eleicaoID;
-    EleicaoObj eleicao;
+    EleicaoObj mEleicao;
 
     BottomNavigationView mBottomNav;
     private int mSelectedItem = 0;
@@ -33,10 +30,12 @@ public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleicao_detalhes);
 
-        Intent intent = getIntent();
-        eleicaoID = intent.getIntExtra(ELEICAO_KEY, 0);
-
-        eleicao = getEleicaoByID(eleicaoID);
+        Bundle b = this.getIntent().getExtras();
+        if (b != null)
+            mEleicao = (EleicaoObj) b.getSerializable(ELEICAO_KEY);
+        else{
+            errorToast();
+        }
 
         mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);
         mBottomNav.inflateMenu(R.menu.bottom_nav_items);
@@ -106,17 +105,15 @@ public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragme
         }
     }
 
-    private EleicaoObj getEleicaoByID(int eleicaoID) {
-        //TODO
+    private void errorToast() {
         Context context = getApplicationContext();
-        CharSequence text = "Not Done. Showing a premade election!";
+        CharSequence text = "Error retrieving selected Election!";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
-        return new EleicaoObj(1,"Associação Académica de Coimbra - OAF", Uri.EMPTY, Calendar.getInstance().getTime());
-        //
+        finish();
 
     }
 

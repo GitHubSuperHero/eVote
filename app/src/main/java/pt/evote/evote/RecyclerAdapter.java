@@ -2,6 +2,7 @@ package pt.evote.evote;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +38,15 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder
 
         @Override
         public void onClick(View v) {
-            //Click em eleicao
+            //Click em mEleicao
 
             Context context = itemView.getContext();
             Intent eleicaoDetalhesIntent = new Intent(context, EleicaoDetalhes.class);
-            eleicaoDetalhesIntent.putExtra(ELEICAO_KEY, mEleicao.getId());
+
+            Bundle b = new Bundle();
+            b.putSerializable(ELEICAO_KEY, mEleicao);
+
+            eleicaoDetalhesIntent.putExtras(b);
             context.startActivity(eleicaoDetalhesIntent);
         }
 
@@ -50,7 +55,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
             mItemDate.setText(mEleicao.getTimeLimit().toString());
-            //mItemLogo.setImageURI(p.getImage());
+            //mItemLogo.setImageURI(p.getImage()); //convert string to uri first
         }
     }
 

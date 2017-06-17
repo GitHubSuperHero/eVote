@@ -1,18 +1,19 @@
 package pt.evote.evote;
 
-import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class EleicaoObj {
+public class EleicaoObj implements Serializable {
 
     private int id;
     private String name;
-    private Uri image;
+    private String image;
     private Date timeLimit;
     private boolean inscrito;
 
-    EleicaoObj(int id, String name, Uri image, Date timeLimit){
+    EleicaoObj(int id, String name, String image, Date timeLimit){
+        this.setId(id);
         this.setName(name);
         this.setImage(image);
         this.setTimeLimit(timeLimit);
@@ -29,11 +30,11 @@ public class EleicaoObj {
         this.name = name;
     }
 
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
