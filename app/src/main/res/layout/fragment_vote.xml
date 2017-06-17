@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pt.evote.evote.CampanhaFragment"
+    tools:context="pt.evote.evote.VoteFragment"
     android:theme="@style/AppTheme">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Campanha" />
+        android:text="@string/votar" />
 
 </FrameLayout>

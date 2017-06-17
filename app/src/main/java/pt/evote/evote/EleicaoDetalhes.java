@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragment.OnFragmentInteractionListener,
+public class EleicaoDetalhes extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
         NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener {
 
     private static final String ELEICAO_KEY = "ELEICAO";
@@ -72,8 +72,8 @@ public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragme
             case R.id.menu_candidatos:
                 frag = new CandidatosFragment();
                 break;
-            case R.id.menu_campanha:
-                frag = new CampanhaFragment();
+            case R.id.menu_vote:
+                frag = new VoteFragment();
                 break;
         }
 
