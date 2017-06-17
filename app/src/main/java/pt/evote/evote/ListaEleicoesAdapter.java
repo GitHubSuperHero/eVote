@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
         private TextView mItemDate;
         private ImageView mItemLogo;
 
+        private TextView mInscrito;
 
         private static final String ELEICAO_KEY = "ELEICAO";
 
@@ -33,6 +37,9 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
             mItemName = (TextView) v.findViewById(R.id.textNameView);
             mItemDate= (TextView) v.findViewById(R.id.textDateView);
             mItemLogo = (ImageView) v.findViewById(R.id.imageLogoView);
+
+            mInscrito = (TextView) v.findViewById(R.id.textViewInscrito);
+
             v.setOnClickListener(this);
         }
 
@@ -54,7 +61,11 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
         void bindEleicao(EleicaoObj eleicao) {
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
-            mItemDate.setText(mEleicao.getTimeLimit().toString());
+            mItemDate.setText(DateUtils.getRelativeTimeSpanString(mEleicao.getTimeLimit().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS));
+
+            if(mEleicao.isInscrito()){
+                mInscrito.setVisibility(View.VISIBLE);
+            }
             //mItemLogo.setImageURI(p.getImageURI()); //convert string to uri first
         }
     }

@@ -63,8 +63,14 @@ public class ListaEleicoesActivity extends AppCompatActivity {
         Calendar rightNow = Calendar.getInstance();
 
         listEleicaoObj.add(new EleicaoObj(1,"Associação Académica de Coimbra - OAF", "", rightNow.getTime()));
+        rightNow.add(Calendar.DAY_OF_MONTH,1);
         listEleicaoObj.add(new EleicaoObj(2,"Automóvel Clube de Portugal - ACP", "", rightNow.getTime()));
+        rightNow.add(Calendar.DAY_OF_MONTH,7);
         listEleicaoObj.add(new EleicaoObj(3,"Câmara Municipal de Coimbra", "", rightNow.getTime()));
+
+        listEleicaoObj.get(0).setInscrito(true);
+
+        //TODO: Sort by date
     }
 
 
