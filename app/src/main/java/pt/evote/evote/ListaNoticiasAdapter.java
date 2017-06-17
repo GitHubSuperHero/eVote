@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
 public class ListaNoticiasAdapter extends RecyclerView.Adapter<ListaNoticiasAdapter.NoticiaHolder> {
 
     private ArrayList<Noticia> mNoticias;
@@ -35,10 +34,10 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<ListaNoticiasAdap
 
         void bindEleicao(Noticia noticia) {
             mNoticia = noticia;
-            mTitle.setText(noticia.getTitle());
-            mBody.setText(noticia.getBody());
-            mDate.setText(noticia.getDate());
-            mSource.setText(noticia.getSource());
+            mTitle.setText(mNoticia.getTitle());
+            mBody.setText(mNoticia.getBody());
+            mDate.setText(mNoticia.getDate());
+            mSource.setText(mNoticia.getSource());
             ///TODO: other fields
         }
     }
@@ -65,7 +64,5 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<ListaNoticiasAdap
     public int getItemCount() {
         return mNoticias.size();
     }
-
-
 
 }

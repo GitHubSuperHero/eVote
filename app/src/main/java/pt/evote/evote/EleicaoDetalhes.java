@@ -70,7 +70,7 @@ public class EleicaoDetalhes extends AppCompatActivity implements VoteFragment.O
                 frag = new NoticiasFragment().newInstance(mEleicao);
                 break;
             case R.id.menu_candidatos:
-                frag = new CandidatosFragment();
+                frag = new CandidatosFragment().newInstance(mEleicao);
                 break;
             case R.id.menu_vote:
                 frag = new VoteFragment();

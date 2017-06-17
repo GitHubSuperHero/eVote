@@ -17,6 +17,7 @@ public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Compara
     private boolean inscrito;
 
     private ArrayList<Noticia> listaNoticias = new ArrayList<>();
+    private ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 
     EleicaoObj(int id, String name, String image, Date timeLimit){
         this.setId(id);
@@ -30,6 +31,9 @@ public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Compara
                 "He did another bad thing... But is there anyone that didn't expect that?",
                 "sapo.pt", "www.sapo.pt", "16/06/2017", ""));
 
+        addCandidato(new Candidato("Zé Povinho", "O candidato do povo", ""));
+
+        addCandidato(new Candidato("Tomão Panela", "O candidato rico", ""));
     }
 
     public String getName() {
@@ -93,4 +97,14 @@ public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Compara
     public int compare(EleicaoObj o, EleicaoObj t1) {
         return o.timeLimit.compareTo(t1.timeLimit);
     }
+
+    public ArrayList<Candidato> getListaCandidatos() {
+        return listaCandidatos;
+    }
+
+    public void setListaCandidatos(ArrayList<Candidato> listaCandidatos) {
+        this.listaCandidatos = listaCandidatos;
+    }
+
+    public void addCandidato(Candidato candidato){ this.listaCandidatos.add(candidato);}
 }

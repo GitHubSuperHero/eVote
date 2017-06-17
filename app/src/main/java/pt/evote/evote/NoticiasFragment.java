@@ -26,7 +26,6 @@ public class NoticiasFragment extends Fragment {
     private LinearLayoutManager mLinearLayoutManager;
     private ListaNoticiasAdapter mAdapter;
 
-    // TODO: Rename and change types of parameters
     private EleicaoObj mEleicao;
 
     private OnFragmentInteractionListener mListener;
@@ -42,7 +41,6 @@ public class NoticiasFragment extends Fragment {
      * @param mEleicao Eleicao.
      * @return A new instance of fragment NoticiasFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static NoticiasFragment newInstance(EleicaoObj mEleicao) {
         NoticiasFragment fragment = new NoticiasFragment();
         Bundle args = new Bundle();
@@ -55,7 +53,7 @@ public class NoticiasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mEleicao =  (EleicaoObj) getArguments().getSerializable(ARG_PARAM);
+            mEleicao = (EleicaoObj) getArguments().getSerializable(ARG_PARAM);
         }
     }
 
@@ -73,7 +71,6 @@ public class NoticiasFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         setRecyclerViewScrollListener();
-
 
         return view;
     }
