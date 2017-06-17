@@ -1,4 +1,4 @@
-package pt.evote.evote.Fragments;
+package pt.evote.evote;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,17 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import pt.evote.evote.R;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NoticiasFragment.OnFragmentInteractionListener} interface
+ * {@link CandidatosFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NoticiasFragment#newInstance} factory method to
+ * Use the {@link CandidatosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NoticiasFragment extends Fragment {
+public class CandidatosFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +28,7 @@ public class NoticiasFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public NoticiasFragment() {
+    public CandidatosFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +38,11 @@ public class NoticiasFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NoticiasFragment.
+     * @return A new instance of fragment CandidatosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NoticiasFragment newInstance(String param1, String param2) {
-        NoticiasFragment fragment = new NoticiasFragment();
+    public static CandidatosFragment newInstance(String param1, String param2) {
+        CandidatosFragment fragment = new CandidatosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +63,7 @@ public class NoticiasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_noticias, container, false);
+        return inflater.inflate(R.layout.fragment_candidatos, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

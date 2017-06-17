@@ -11,9 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-import pt.evote.evote.Fragments.CampanhaFragment;
-import pt.evote.evote.Fragments.CandidatosFragment;
-import pt.evote.evote.Fragments.NoticiasFragment;
 
 public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragment.OnFragmentInteractionListener,
         NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener {
@@ -70,7 +67,7 @@ public class EleicaoDetalhes extends AppCompatActivity implements CampanhaFragme
         // init corresponding fragment
         switch (item.getItemId()) {
             case R.id.menu_noticias:
-                frag = new NoticiasFragment();
+                frag = new NoticiasFragment().newInstance(mEleicao);
                 break;
             case R.id.menu_candidatos:
                 frag = new CandidatosFragment();

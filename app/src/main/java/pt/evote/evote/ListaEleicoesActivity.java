@@ -14,7 +14,7 @@ public class ListaEleicoesActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
-    private RecyclerAdapter mAdapter;
+    private ListaEleicoesAdapter mAdapter;
 
     private static final int LOGOUT = 2;
 
@@ -27,7 +27,7 @@ public class ListaEleicoesActivity extends AppCompatActivity {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mAdapter = new RecyclerAdapter(listEleicaoObj);
+        mAdapter = new ListaEleicoesAdapter(listEleicaoObj);
         mRecyclerView.setAdapter(mAdapter);
 
         setRecyclerViewScrollListener();

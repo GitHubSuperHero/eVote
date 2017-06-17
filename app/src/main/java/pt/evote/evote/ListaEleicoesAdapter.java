@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder> {
+class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.EleicaoHolder> {
 
     private ArrayList<EleicaoObj> mEleicao;
 
@@ -55,16 +55,16 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
             mItemDate.setText(mEleicao.getTimeLimit().toString());
-            //mItemLogo.setImageURI(p.getImage()); //convert string to uri first
+            //mItemLogo.setImageURI(p.getImageURI()); //convert string to uri first
         }
     }
 
-    RecyclerAdapter(ArrayList<EleicaoObj> eleicaos) {
+    ListaEleicoesAdapter(ArrayList<EleicaoObj> eleicaos) {
         mEleicao = eleicaos;
     }
 
     @Override
-    public RecyclerAdapter.EleicaoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ListaEleicoesAdapter.EleicaoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View inflatedView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.eleicaorow, parent, false);
         return new EleicaoHolder(inflatedView);
@@ -72,7 +72,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.EleicaoHolder
 
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.EleicaoHolder holder, int position) {
+    public void onBindViewHolder(ListaEleicoesAdapter.EleicaoHolder holder, int position) {
         EleicaoObj itemEleicao = mEleicao.get(position);
         holder.bindEleicao(itemEleicao);
     }

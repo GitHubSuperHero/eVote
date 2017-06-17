@@ -1,14 +1,15 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pt.evote.evote.Fragments.NoticiasFragment"
-    android:theme="@style/AppTheme">
+    tools:context="pt.evote.evote.NoticiasFragment"
+    android:theme="@style/AppTheme"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewNoticias"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Noticias" />
+        android:scrollbars="vertical" />
 
-</FrameLayout>
+</LinearLayout>
