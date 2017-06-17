@@ -1,12 +1,13 @@
 package pt.evote.evote;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 public class ListaEleicoesActivity extends AppCompatActivity {
 
@@ -62,14 +63,21 @@ public class ListaEleicoesActivity extends AppCompatActivity {
     private void requestEleicoes() {
         Calendar rightNow = Calendar.getInstance();
 
-        listEleicaoObj.add(new EleicaoObj(1,"Associação Académica de Coimbra - OAF", "", rightNow.getTime()));
+        EleicaoObj o1 = new EleicaoObj(1,"Associação Académica de Coimbra - OAF", "", rightNow.getTime());
+        o1.setInscrito(true);
+
         rightNow.add(Calendar.DAY_OF_MONTH,1);
-        listEleicaoObj.add(new EleicaoObj(2,"Automóvel Clube de Portugal - ACP", "", rightNow.getTime()));
+        EleicaoObj o2 = new EleicaoObj(2,"Automóvel Clube de Portugal - ACP", "", rightNow.getTime());
+
         rightNow.add(Calendar.DAY_OF_MONTH,7);
-        listEleicaoObj.add(new EleicaoObj(3,"Câmara Municipal de Coimbra", "", rightNow.getTime()));
+        EleicaoObj o3 = new EleicaoObj(3,"Câmara Municipal de Coimbra", "", rightNow.getTime());
 
-        listEleicaoObj.get(0).setInscrito(true);
 
+        listEleicaoObj.add(o3);
+        listEleicaoObj.add(o2);
+        listEleicaoObj.add(o1);
+
+        Collections.sort(listEleicaoObj);
         //TODO: Sort by date
     }
 

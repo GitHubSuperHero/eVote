@@ -30,7 +30,8 @@
         android:layout_marginTop="15dp"
         android:padding="5dp"
         android:layout_height="50dp"
-        android:layout_below="@id/imageViewLogo"/>
+        android:layout_below="@id/imageViewLogo"
+        android:textDirection="locale"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -40,7 +41,9 @@
         android:hint="@string/password"
         android:padding="5dp"
         android:layout_below="@+id/editUsername"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textDirection="locale"
+        android:textAlignment="viewStart"/>
 
     <Button
         android:text="@string/entrar"
@@ -49,7 +52,8 @@
         android:textColorLink="@color/colorAccent"
         android:layout_height="60dp"
         android:onClick="onButtonClick"
-        android:layout_below="@id/editPassword"/>
+        android:layout_below="@id/editPassword"
+        />
 
     <LinearLayout
         android:id="@+id/smallLinksLayout"
@@ -65,9 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="start"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="@string/registar_aqui" />
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="@string/registar_aqui"
+            android:textAlignment="viewStart"/>
 
         <TextView
             android:id="@+id/textViewForgotPassword"
@@ -75,11 +80,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="@string/esqueci_a_password" />
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="@string/esqueci_a_password"
+            android:textAlignment="viewEnd"/>
     </LinearLayout>
-
 
 
     <TextView

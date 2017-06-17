@@ -43,7 +43,8 @@
                 android:padding="16dp"
                 android:text="Title"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textDirection="locale"/>
 
             <TextView
                 android:id="@+id/textViewDate"
@@ -54,7 +55,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/date"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:textDirection="locale"/>
 
             <TextView
                 android:id="@+id/textViewBody"
@@ -64,9 +66,11 @@
                 android:layout_below="@+id/textViewDate"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Body"
-                android:textColor="@color/colorSecondaryText" />
+                android:textColor="@color/colorSecondaryText"
+                android:textDirection="locale"/>
 
             <TextView
                 android:id="@+id/textViewSource"

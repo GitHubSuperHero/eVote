@@ -1,11 +1,14 @@
 package pt.evote.evote;
 
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 
-public class EleicaoObj implements Serializable {
+public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Comparator<EleicaoObj> {
 
     private int id;
     private String name;
@@ -79,5 +82,15 @@ public class EleicaoObj implements Serializable {
 
     public void addNoticia(Noticia noticia) {
         this.listaNoticias.add(noticia);
+    }
+
+    @Override
+    public int compareTo(@NonNull EleicaoObj o) {
+        return this.timeLimit.compareTo(o.timeLimit);
+    }
+
+    @Override
+    public int compare(EleicaoObj o, EleicaoObj t1) {
+        return o.timeLimit.compareTo(t1.timeLimit);
     }
 }
