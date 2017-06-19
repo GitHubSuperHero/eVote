@@ -12,12 +12,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class EleicaoDetalhes extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
+public class EleicaoCompletaDetalhes extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
         NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener {
 
     private static final String ELEICAO_KEY = "ELEICAO";
     private static final String SELECTED_ITEM = "arg_selected_item";
-    EleicaoObj mEleicao;
+    EleicaoCompleta mEleicao;
 
     BottomNavigationView mBottomNav;
     private int mSelectedItem = 0;
@@ -25,11 +25,11 @@ public class EleicaoDetalhes extends AppCompatActivity implements VoteFragment.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eleicao_detalhes);
+        setContentView(R.layout.activity_eleicao_completa_detalhes);
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)
-            mEleicao = (EleicaoObj) b.getSerializable(ELEICAO_KEY);
+            mEleicao = (EleicaoCompleta) b.getSerializable(ELEICAO_KEY);
         else{
             errorToast();
         }
@@ -67,10 +67,10 @@ public class EleicaoDetalhes extends AppCompatActivity implements VoteFragment.O
         // init corresponding fragment
         switch (item.getItemId()) {
             case R.id.menu_noticias:
-                frag = new NoticiasFragment().newInstance(mEleicao);
+                frag = NoticiasFragment.newInstance(mEleicao);
                 break;
             case R.id.menu_candidatos:
-                frag = new CandidatosFragment().newInstance(mEleicao);
+                frag = CandidatosFragment.newInstance(mEleicao);
                 break;
             case R.id.menu_vote:
                 frag = new VoteFragment();

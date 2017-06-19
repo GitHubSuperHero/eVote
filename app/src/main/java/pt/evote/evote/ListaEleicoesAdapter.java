@@ -10,8 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,20 +47,33 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
             //Click em mEleicao
 
             Context context = itemView.getContext();
-            Intent eleicaoDetalhesIntent = new Intent(context, EleicaoDetalhes.class);
 
             Bundle b = new Bundle();
             b.putSerializable(ELEICAO_KEY, mEleicao);
 
-            eleicaoDetalhesIntent.putExtras(b);
-            context.startActivity(eleicaoDetalhesIntent);
+            if(mEleicao.getClass() == EleicaoCompleta.class){
+                Intent eleicaoDetalhesIntent = new Intent(context, EleicaoCompletaDetalhes.class);
+                eleicaoDetalhesIntent.putExtras(b);
+                context.startActivity(eleicaoDetalhesIntent);
+            }
+            else if(mEleicao.getClass() == EleicaoSimples.class){
+                //TODO: Make a EleicaoSimples Activity
+
+                /* eleicaoDetalhesIntent = new Intent(context, EleicaoCompletaDetalhes.class);
+                eleicaoDetalhesIntent.putExtras(b);
+                context.startActivity(eleicaoDetalhesIntent);*/
+
+                Toast toast = Toast.makeText(context, "Not Implemented Yet", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
         }
 
 
         void bindEleicao(EleicaoObj eleicao) {
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
-            mItemDate.setText(DateUtils.getRelativeTimeSpanString(mEleicao.getTimeLimit().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS));
+            mItemDate.setText(DateUtils.getRelativeTimeSpanString(mEleicao.getTimeOpen().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS));
 
             if(mEleicao.isInscrito()){
                 mInscrito.setVisibility(View.VISIBLE);
@@ -77,7 +89,7 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
     @Override
     public ListaEleicoesAdapter.EleicaoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View inflatedView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.eleicaorow, parent, false);
+                .inflate(R.layout.row_eleicao, parent, false);
         return new EleicaoHolder(inflatedView);
     }
 

@@ -22,7 +22,7 @@
             android:name=".CreditsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".EleicaoDetalhes"
+            android:name=".EleicaoCompletaDetalhes"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MainActivity"

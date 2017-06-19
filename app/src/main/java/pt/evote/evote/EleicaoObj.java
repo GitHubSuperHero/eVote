@@ -1,6 +1,5 @@
 package pt.evote.evote;
 
-
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
@@ -8,28 +7,25 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 
-public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Comparator<EleicaoObj> {
+public abstract class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Comparator<EleicaoObj> {
 
     private int id;
     private String name;
     private String imageURI;
-    private Date timeLimit;
+    private Date timeOpen;
+    private Date timeClose;
     private boolean inscrito;
 
-    private ArrayList<Noticia> listaNoticias = new ArrayList<>();
     private ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 
-    EleicaoObj(int id, String name, String image, Date timeLimit){
+    EleicaoObj(int id, String name, String image, Date timeOpen, Date timeClose){
         this.setId(id);
         this.setName(name);
         this.setImageURI(image);
-        this.setTimeLimit(timeLimit);
+        this.setTimeOpen(timeOpen);
+        this.setTimeClose(timeClose);
 
         this.setInscrito(false);
-
-        addNoticia(new Noticia("Trump did things",
-                "He did another bad thing... But is there anyone that didn't expect that?",
-                "sapo.pt", "www.sapo.pt", "16/06/2017", ""));
 
         addCandidato(new Candidato("Zé Povinho", "O candidato do povo", ""));
 
@@ -52,12 +48,12 @@ public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Compara
         this.imageURI = image;
     }
 
-    public Date getTimeLimit() {
-        return timeLimit;
+    public Date getTimeClose() {
+        return timeClose;
     }
 
-    public void setTimeLimit(Date timeLimit) {
-        this.timeLimit = timeLimit;
+    public void setTimeClose(Date timeClose) {
+        this.timeClose = timeClose;
     }
 
     public int getId() {
@@ -76,26 +72,14 @@ public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Compara
         this.inscrito = inscrito;
     }
 
-    public ArrayList<Noticia> getListaNoticias() {
-        return listaNoticias;
-    }
-
-    public void setListaNoticias(ArrayList<Noticia> listaNoticias) {
-        this.listaNoticias = listaNoticias;
-    }
-
-    public void addNoticia(Noticia noticia) {
-        this.listaNoticias.add(noticia);
-    }
-
     @Override
     public int compareTo(@NonNull EleicaoObj o) {
-        return this.timeLimit.compareTo(o.timeLimit);
+        return this.timeOpen.compareTo(o.timeOpen);
     }
 
     @Override
     public int compare(EleicaoObj o, EleicaoObj t1) {
-        return o.timeLimit.compareTo(t1.timeLimit);
+        return o.timeOpen.compareTo(t1.timeOpen);
     }
 
     public ArrayList<Candidato> getListaCandidatos() {
@@ -107,4 +91,12 @@ public class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Compara
     }
 
     public void addCandidato(Candidato candidato){ this.listaCandidatos.add(candidato);}
+
+    public Date getTimeOpen() {
+        return timeOpen;
+    }
+
+    public void setTimeOpen(Date timeOpen) {
+        this.timeOpen = timeOpen;
+    }
 }

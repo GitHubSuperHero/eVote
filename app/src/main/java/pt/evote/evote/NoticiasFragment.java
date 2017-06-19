@@ -26,7 +26,7 @@ public class NoticiasFragment extends Fragment {
     private LinearLayoutManager mLinearLayoutManager;
     private ListaNoticiasAdapter mAdapter;
 
-    private EleicaoObj mEleicao;
+    private EleicaoCompleta mEleicao;
 
     private OnFragmentInteractionListener mListener;
 
@@ -53,7 +53,7 @@ public class NoticiasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mEleicao = (EleicaoObj) getArguments().getSerializable(ARG_PARAM);
+            mEleicao = (EleicaoCompleta) getArguments().getSerializable(ARG_PARAM);
         }
     }
 

@@ -46,7 +46,7 @@ public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatos
     @Override
     public ListaCandidatosAdapter.CandidatoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View inflatedView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.candidato_row, parent, false);
+                .inflate(R.layout.row_candidato, parent, false);
         return new ListaCandidatosAdapter.CandidatoHolder(inflatedView);
     }
 

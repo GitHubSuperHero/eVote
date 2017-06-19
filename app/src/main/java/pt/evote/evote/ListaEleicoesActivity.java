@@ -62,15 +62,21 @@ public class ListaEleicoesActivity extends AppCompatActivity {
 
     private void requestEleicoes() {
         Calendar rightNow = Calendar.getInstance();
+        rightNow.set(Calendar.HOUR, 8);
 
-        EleicaoObj o1 = new EleicaoObj(1,"Associação Académica de Coimbra - OAF", "", rightNow.getTime());
+        Calendar close = rightNow;
+        close.add(Calendar.HOUR, 18);
+
+        EleicaoObj o1 = new EleicaoCompleta(1,"Associação Académica de Coimbra - OAF", "", rightNow.getTime(), close.getTime());
         o1.setInscrito(true);
 
         rightNow.add(Calendar.DAY_OF_MONTH,1);
-        EleicaoObj o2 = new EleicaoObj(2,"Automóvel Clube de Portugal - ACP", "", rightNow.getTime());
+        close.add(Calendar.DAY_OF_MONTH,1);
+        EleicaoObj o2 = new EleicaoCompleta(2,"Automóvel Clube de Portugal - ACP", "", rightNow.getTime(), close.getTime());
 
         rightNow.add(Calendar.DAY_OF_MONTH,7);
-        EleicaoObj o3 = new EleicaoObj(3,"Câmara Municipal de Coimbra", "", rightNow.getTime());
+        close.add(Calendar.DAY_OF_MONTH,7);
+        EleicaoObj o3 = new EleicaoSimples(3,"Câmara Municipal de Coimbra", "", rightNow.getTime(), close.getTime());
 
 
         listEleicaoObj.add(o3);
