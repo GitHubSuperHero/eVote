@@ -73,7 +73,7 @@ public class EleicaoCompletaDetalhes extends AppCompatActivity implements VoteFr
                 frag = CandidatosFragment.newInstance(mEleicao);
                 break;
             case R.id.menu_vote:
-                frag = new VoteFragment();
+                frag = VoteFragment.newInstance(mEleicao);
                 break;
         }
 
@@ -104,7 +104,7 @@ public class EleicaoCompletaDetalhes extends AppCompatActivity implements VoteFr
 
     private void errorToast() {
         Context context = getApplicationContext();
-        CharSequence text = "Error retrieving selected Election!";
+        CharSequence text = getString(R.string.errorRetriveElection);
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);

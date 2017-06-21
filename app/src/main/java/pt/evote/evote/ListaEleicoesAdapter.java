@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,14 +56,9 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
                 context.startActivity(eleicaoDetalhesIntent);
             }
             else if(mEleicao.getClass() == EleicaoSimples.class){
-                //TODO: Make a EleicaoSimples Activity
-
-                /* eleicaoDetalhesIntent = new Intent(context, EleicaoCompletaDetalhes.class);
+                Intent eleicaoDetalhesIntent = new Intent(context, EleicaoSimplesActivity.class);
                 eleicaoDetalhesIntent.putExtras(b);
-                context.startActivity(eleicaoDetalhesIntent);*/
-
-                Toast toast = Toast.makeText(context, "Not Implemented Yet", Toast.LENGTH_SHORT);
-                toast.show();
+                context.startActivity(eleicaoDetalhesIntent);
             }
 
         }

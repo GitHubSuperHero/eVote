@@ -27,6 +27,8 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme" />
+        <activity android:name=".EleicaoSimplesActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

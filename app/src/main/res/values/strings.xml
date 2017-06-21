@@ -18,4 +18,5 @@
     <string name="noticias">Notícias</string>
     <string name="date">Date</string>
     <string name="votar">Votar</string>
+    <string name="errorRetriveElection">Erro ao receber dados da eleição!</string>
 </resources>

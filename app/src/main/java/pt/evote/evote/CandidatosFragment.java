@@ -26,7 +26,7 @@ public class CandidatosFragment extends Fragment {
     private LinearLayoutManager mLinearLayoutManager;
     private ListaCandidatosAdapter mAdapter;
 
-    private EleicaoObj mEleicao;
+    private EleicaoCompleta mEleicao;
 
     private OnFragmentInteractionListener mListener;
 
@@ -41,7 +41,7 @@ public class CandidatosFragment extends Fragment {
      * @param mEleicao Eleicao.
      * @return A new instance of fragment CandidatosFragment.
      */
-    public static CandidatosFragment newInstance(EleicaoObj mEleicao) {
+    public static CandidatosFragment newInstance(EleicaoCompleta mEleicao) {
         CandidatosFragment fragment = new CandidatosFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM, mEleicao);
@@ -53,7 +53,7 @@ public class CandidatosFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mEleicao = (EleicaoObj) getArguments().getSerializable(ARG_PARAM);
+            mEleicao = (EleicaoCompleta) getArguments().getSerializable(ARG_PARAM);
         }
     }
 
