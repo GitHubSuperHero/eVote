@@ -1,5 +1,8 @@
 package pt.evote.evote;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +15,15 @@ import java.util.ArrayList;
 public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatosAdapter.CandidatoHolder>{
     private ArrayList<Candidato> mCandidatos;
 
-    static class CandidatoHolder extends RecyclerView.ViewHolder {
+    static class CandidatoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Candidato mCandidato;
 
         private ImageView mImagem;
         private TextView mName;
         private TextView mDescription;
+
+        private static final String CANDIDATO_KEY = "CANDIDATO";
 
         CandidatoHolder(View v) {
             super(v);
@@ -28,6 +33,19 @@ public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatos
             mDescription = (TextView) v.findViewById(R.id.textViewCandidateDescription);
             ///TODO: other fields
 
+            v.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Context context = itemView.getContext();
+
+            Bundle b = new Bundle();
+            b.putSerializable(CANDIDATO_KEY, mCandidato);
+
+            Intent candidatosIntent = new Intent(context, CandidatoDetalhesActivity.class);
+            candidatosIntent.putExtras(b);
+            context.startActivity(candidatosIntent);
         }
 
         void bindEleicao(Candidato candidato) {

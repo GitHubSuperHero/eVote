@@ -11,7 +11,6 @@ import android.widget.Toast;
 public class EleicaoSimplesActivity extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener {
 
     private static final String ELEICAO_KEY = "ELEICAO";
-    private static final String SELECTED_ITEM = "arg_selected_item";
     EleicaoSimples mEleicao;
 
     @Override

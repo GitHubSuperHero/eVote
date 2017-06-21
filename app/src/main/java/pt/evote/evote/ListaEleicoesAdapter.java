@@ -63,7 +63,6 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
 
         }
 
-
         void bindEleicao(EleicaoObj eleicao) {
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
