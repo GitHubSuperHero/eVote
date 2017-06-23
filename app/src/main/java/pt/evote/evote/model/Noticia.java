@@ -1,8 +1,8 @@
-package pt.evote.evote;
+package pt.evote.evote.model;
 
 import java.io.Serializable;
 
-public class Noticia implements Serializable{
+public class Noticia implements Serializable {
     private String title;
     private String body;
     private String source;
@@ -10,7 +10,7 @@ public class Noticia implements Serializable{
     private String date;
     private String imageURI;
 
-    public Noticia(String title, String body, String source, String url, String date, String imageURI){
+    public Noticia(String title, String body, String source, String url, String date, String imageURI) {
         this.setBody(body);
         this.setDate(date);
         this.setImageURI(imageURI);

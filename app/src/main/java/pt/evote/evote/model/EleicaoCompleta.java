@@ -1,15 +1,15 @@
-package pt.evote.evote;
+package pt.evote.evote.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class EleicaoCompleta extends EleicaoObj {
+public class EleicaoCompleta extends Eleicao {
 
     private ArrayList<Noticia> listaNoticias = new ArrayList<>();
 
 
-    EleicaoCompleta(int id, String name, String image, Date timeOpen, Date timeClose) {
+    public EleicaoCompleta(int id, String name, String image, Date timeOpen, Date timeClose) {
         super(id, name, image, timeOpen, timeClose);
 
         addNoticia(new Noticia("Trump did things",

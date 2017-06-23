@@ -1,4 +1,4 @@
-package pt.evote.evote;
+package pt.evote.evote.screens.eleicoes;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +9,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
+import pt.evote.evote.R;
+import pt.evote.evote.model.Eleicao;
+import pt.evote.evote.model.EleicaoCompleta;
+import pt.evote.evote.model.EleicaoSimples;
+
 public class ListaEleicoesActivity extends AppCompatActivity {
 
-    ArrayList<EleicaoObj> listEleicaoObj = new ArrayList<>();
+    ArrayList<Eleicao> listEleicao = new ArrayList<>();
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
@@ -28,7 +33,7 @@ public class ListaEleicoesActivity extends AppCompatActivity {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mAdapter = new ListaEleicoesAdapter(listEleicaoObj);
+        mAdapter = new ListaEleicoesAdapter(listEleicao);
         mRecyclerView.setAdapter(mAdapter);
 
         setRecyclerViewScrollListener();
@@ -38,7 +43,7 @@ public class ListaEleicoesActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if (listEleicaoObj.size() == 0) {
+        if (listEleicao.size() == 0) {
             requestEleicoes();
         }
     }
@@ -67,28 +72,28 @@ public class ListaEleicoesActivity extends AppCompatActivity {
         Calendar close = rightNow;
         close.add(Calendar.HOUR, 18);
 
-        EleicaoObj o1 = new EleicaoCompleta(1,"Associação Académica de Coimbra - OAF", "", rightNow.getTime(), close.getTime());
+        Eleicao o1 = new EleicaoCompleta(1, "Associação Académica de Coimbra - OAF", "", rightNow.getTime(), close.getTime());
         o1.setInscrito(true);
 
-        rightNow.add(Calendar.DAY_OF_MONTH,1);
-        close.add(Calendar.DAY_OF_MONTH,1);
-        EleicaoObj o2 = new EleicaoCompleta(2,"Automóvel Clube de Portugal - ACP", "", rightNow.getTime(), close.getTime());
+        rightNow.add(Calendar.DAY_OF_MONTH, 1);
+        close.add(Calendar.DAY_OF_MONTH, 1);
+        Eleicao o2 = new EleicaoCompleta(2, "Automóvel Clube de Portugal - ACP", "", rightNow.getTime(), close.getTime());
 
-        rightNow.add(Calendar.DAY_OF_MONTH,7);
-        close.add(Calendar.DAY_OF_MONTH,7);
-        EleicaoObj o3 = new EleicaoSimples(3,"Câmara Municipal de Coimbra", "", rightNow.getTime(), close.getTime());
+        rightNow.add(Calendar.DAY_OF_MONTH, 7);
+        close.add(Calendar.DAY_OF_MONTH, 7);
+        Eleicao o3 = new EleicaoSimples(3, "Câmara Municipal de Coimbra", "", rightNow.getTime(), close.getTime());
 
 
-        listEleicaoObj.add(o3);
-        listEleicaoObj.add(o2);
-        listEleicaoObj.add(o1);
+        listEleicao.add(o3);
+        listEleicao.add(o2);
+        listEleicao.add(o1);
 
-        Collections.sort(listEleicaoObj);
+        Collections.sort(listEleicao);
         //TODO: Sort by date
     }
 
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         //setResult(LOGOUT);
         super.onBackPressed();
     }

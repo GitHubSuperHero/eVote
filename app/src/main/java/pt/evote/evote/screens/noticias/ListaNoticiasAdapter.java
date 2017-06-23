@@ -1,4 +1,4 @@
-package pt.evote.evote;
+package pt.evote.evote.screens.noticias;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import pt.evote.evote.R;
+import pt.evote.evote.model.Noticia;
 
 public class ListaNoticiasAdapter extends RecyclerView.Adapter<ListaNoticiasAdapter.NoticiaHolder> {
 

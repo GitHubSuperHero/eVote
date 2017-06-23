@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pt.evote.evote.VoteFragment"
+    tools:context="pt.evote.evote.screens.vote.VoteFragment"
     android:theme="@style/AppTheme">
 
     <!-- TODO: Update blank fragment layout -->

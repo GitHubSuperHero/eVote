@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="pt.evote.evote.CandidatoDetalhesActivity">
+    tools:context="pt.evote.evote.screens.CandidatoDetalhesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

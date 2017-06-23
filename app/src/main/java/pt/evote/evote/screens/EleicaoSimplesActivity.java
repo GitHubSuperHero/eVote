@@ -1,12 +1,16 @@
-package pt.evote.evote;
+package pt.evote.evote.screens;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Toast;
+
+import pt.evote.evote.R;
+import pt.evote.evote.model.EleicaoSimples;
+import pt.evote.evote.screens.vote.VoteFragment;
 
 public class EleicaoSimplesActivity extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener {
 
@@ -22,14 +26,13 @@ public class EleicaoSimplesActivity extends AppCompatActivity implements VoteFra
         if (b != null)
             mEleicao = (EleicaoSimples) b.getSerializable(ELEICAO_KEY);
 
-            Fragment frag = VoteFragment.newInstance(mEleicao);
+        Fragment frag = VoteFragment.newInstance(mEleicao);
 
         if (frag != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.containerEleicaoSimples, frag, frag.getTag());
             ft.commit();
-        }
-        else{
+        } else {
             errorToast();
         }
     }

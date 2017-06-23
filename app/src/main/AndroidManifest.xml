@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/SplashTheme">
-        <activity android:name=".Splash">
+        <activity android:name=".screens.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,22 +16,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListaEleicoesActivity"
+            android:name=".screens.eleicoes.ListaEleicoesActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".CreditsActivity"
+            android:name=".screens.CreditsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".EleicaoCompletaDetalhes"
+            android:name=".screens.EleicaoCompletaActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".EleicaoSimplesActivity"
+            android:name=".screens.EleicaoSimplesActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".CandidatoDetalhesActivity"
+            android:name=".screens.CandidatoDetalhesActivity"
             android:label="@string/title_activity_candidato_detalhes"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

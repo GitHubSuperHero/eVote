@@ -1,4 +1,4 @@
-package pt.evote.evote;
+package pt.evote.evote.screens.candidatos;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatosAdapter.CandidatoHolder>{
+import pt.evote.evote.R;
+import pt.evote.evote.model.Candidato;
+import pt.evote.evote.screens.CandidatoDetalhesActivity;
+
+public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatosAdapter.CandidatoHolder> {
     private ArrayList<Candidato> mCandidatos;
 
     static class CandidatoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

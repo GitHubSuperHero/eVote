@@ -1,5 +1,4 @@
-package pt.evote.evote;
-
+package pt.evote.evote.model;
 
 import java.io.Serializable;
 
@@ -9,7 +8,7 @@ public class Candidato implements Serializable {
     private String fotoURI;
     private String descricao;
 
-    public Candidato(String nome, String descricao, String fotoURI){
+    public Candidato(String nome, String descricao, String fotoURI) {
 
         this.setNomeCandidato(nome);
         this.setFotoURI(fotoURI);

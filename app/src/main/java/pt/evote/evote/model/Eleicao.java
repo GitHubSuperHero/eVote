@@ -1,4 +1,4 @@
-package pt.evote.evote;
+package pt.evote.evote.model;
 
 import android.support.annotation.NonNull;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 
-public abstract class EleicaoObj implements Serializable, Comparable<EleicaoObj>, Comparator<EleicaoObj> {
+public abstract class Eleicao implements Serializable, Comparable<Eleicao>, Comparator<Eleicao> {
 
     private int id;
     private String name;
@@ -18,7 +18,7 @@ public abstract class EleicaoObj implements Serializable, Comparable<EleicaoObj>
 
     private ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 
-    EleicaoObj(int id, String name, String image, Date timeOpen, Date timeClose){
+    Eleicao(int id, String name, String image, Date timeOpen, Date timeClose) {
         this.setId(id);
         this.setName(name);
         this.setImageURI(image);
@@ -73,12 +73,12 @@ public abstract class EleicaoObj implements Serializable, Comparable<EleicaoObj>
     }
 
     @Override
-    public int compareTo(@NonNull EleicaoObj o) {
+    public int compareTo(@NonNull Eleicao o) {
         return this.timeOpen.compareTo(o.timeOpen);
     }
 
     @Override
-    public int compare(EleicaoObj o, EleicaoObj t1) {
+    public int compare(Eleicao o, Eleicao t1) {
         return o.timeOpen.compareTo(t1.timeOpen);
     }
 
@@ -90,7 +90,9 @@ public abstract class EleicaoObj implements Serializable, Comparable<EleicaoObj>
         this.listaCandidatos = listaCandidatos;
     }
 
-    public void addCandidato(Candidato candidato){ this.listaCandidatos.add(candidato);}
+    public void addCandidato(Candidato candidato) {
+        this.listaCandidatos.add(candidato);
+    }
 
     public Date getTimeOpen() {
         return timeOpen;

@@ -1,4 +1,4 @@
-package pt.evote.evote;
+package pt.evote.evote.screens.candidatos;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,27 +10,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import pt.evote.evote.R;
+import pt.evote.evote.model.EleicaoCompleta;
+
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NoticiasFragment.OnFragmentInteractionListener} interface
+ * {@link CandidatosFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NoticiasFragment#newInstance} factory method to
+ * Use the {@link CandidatosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NoticiasFragment extends Fragment {
+public class CandidatosFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM = "param";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
-    private ListaNoticiasAdapter mAdapter;
+    private ListaCandidatosAdapter mAdapter;
 
     private EleicaoCompleta mEleicao;
 
     private OnFragmentInteractionListener mListener;
 
-    public NoticiasFragment() {
+    public CandidatosFragment() {
         // Required empty public constructor
     }
 
@@ -39,10 +43,10 @@ public class NoticiasFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param mEleicao Eleicao.
-     * @return A new instance of fragment NoticiasFragment.
+     * @return A new instance of fragment CandidatosFragment.
      */
-    public static NoticiasFragment newInstance(EleicaoObj mEleicao) {
-        NoticiasFragment fragment = new NoticiasFragment();
+    public static CandidatosFragment newInstance(EleicaoCompleta mEleicao) {
+        CandidatosFragment fragment = new CandidatosFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM, mEleicao);
         fragment.setArguments(args);
@@ -61,13 +65,13 @@ public class NoticiasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_noticias, container, false);
+        View view = inflater.inflate(R.layout.fragment_candidatos, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewNoticias);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewCandidatos);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mAdapter = new ListaNoticiasAdapter(mEleicao.getListaNoticias());
+        mAdapter = new ListaCandidatosAdapter(mEleicao.getListaCandidatos());
         mRecyclerView.setAdapter(mAdapter);
 
         setRecyclerViewScrollListener();
@@ -124,19 +128,8 @@ public class NoticiasFragment extends Fragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
-                if (totalItemCount == getLastVisibleItemPosition() + 1) {
-                    requestNoticias();
-                }
             }
         });
-    }
-
-    private void requestNoticias() {
-
-        //Check for more news.... In this example we add another copy of this one
-        mEleicao.addNoticia(new Noticia("Trump did more things",
-                "He did yet another bad thing... But is there still anyone that didn't expect that?",
-                "sapo.pt", "www.sapo.pt", "17/06/2017", ""));
     }
 
 }

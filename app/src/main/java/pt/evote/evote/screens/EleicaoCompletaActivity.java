@@ -1,18 +1,24 @@
-package pt.evote.evote;
+package pt.evote.evote.screens;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class EleicaoCompletaDetalhes extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
+import pt.evote.evote.R;
+import pt.evote.evote.model.EleicaoCompleta;
+import pt.evote.evote.screens.candidatos.CandidatosFragment;
+import pt.evote.evote.screens.noticias.NoticiasFragment;
+import pt.evote.evote.screens.vote.VoteFragment;
+
+public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
         NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener {
 
     private static final String ELEICAO_KEY = "ELEICAO";
@@ -30,7 +36,7 @@ public class EleicaoCompletaDetalhes extends AppCompatActivity implements VoteFr
         Bundle b = this.getIntent().getExtras();
         if (b != null)
             mEleicao = (EleicaoCompleta) b.getSerializable(ELEICAO_KEY);
-        else{
+        else {
             errorToast();
         }
 

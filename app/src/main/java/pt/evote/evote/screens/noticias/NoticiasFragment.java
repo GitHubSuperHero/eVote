@@ -1,32 +1,41 @@
-package pt.evote.evote;
+package pt.evote.evote.screens.noticias;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import pt.evote.evote.R;
+import pt.evote.evote.model.Eleicao;
+import pt.evote.evote.model.EleicaoCompleta;
+import pt.evote.evote.model.Noticia;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link VoteFragment.OnFragmentInteractionListener} interface
+ * {@link NoticiasFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link VoteFragment#newInstance} factory method to
+ * Use the {@link NoticiasFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VoteFragment extends Fragment {
+public class NoticiasFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM = "param";
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLinearLayoutManager;
+    private ListaNoticiasAdapter mAdapter;
 
-    private EleicaoObj mEleicao;
+    private EleicaoCompleta mEleicao;
 
     private OnFragmentInteractionListener mListener;
 
-    public VoteFragment() {
+    public NoticiasFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +44,10 @@ public class VoteFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param mEleicao Eleicao.
-     * @return A new instance of fragment VoteFragment.
+     * @return A new instance of fragment NoticiasFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static VoteFragment newInstance(EleicaoObj mEleicao) {
-        VoteFragment fragment = new VoteFragment();
+    public static NoticiasFragment newInstance(Eleicao mEleicao) {
+        NoticiasFragment fragment = new NoticiasFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM, mEleicao);
         fragment.setArguments(args);
@@ -50,7 +58,7 @@ public class VoteFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mEleicao = (EleicaoObj) getArguments().getSerializable(ARG_PARAM);
+            mEleicao = (EleicaoCompleta) getArguments().getSerializable(ARG_PARAM);
         }
     }
 
@@ -58,15 +66,18 @@ public class VoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_vote, container, false);
+        View view = inflater.inflate(R.layout.fragment_noticias, container, false);
 
-        TextView votar;
-        votar = (TextView) v.findViewById(R.id.TextViewVotar);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewNoticias);
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        votar.setText(mEleicao.getName());
+        mAdapter = new ListaNoticiasAdapter(mEleicao.getListaNoticias());
+        mRecyclerView.setAdapter(mAdapter);
 
+        setRecyclerViewScrollListener();
 
-        return v;
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,4 +118,30 @@ public class VoteFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private int getLastVisibleItemPosition() {
+        return mLinearLayoutManager.findLastVisibleItemPosition();
+    }
+
+    private void setRecyclerViewScrollListener() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
+                if (totalItemCount == getLastVisibleItemPosition() + 1) {
+                    requestNoticias();
+                }
+            }
+        });
+    }
+
+    private void requestNoticias() {
+
+        //Check for more news.... In this example we add another copy of this one
+        mEleicao.addNoticia(new Noticia("Trump did more things",
+                "He did yet another bad thing... But is there still anyone that didn't expect that?",
+                "sapo.pt", "www.sapo.pt", "17/06/2017", ""));
+    }
+
 }

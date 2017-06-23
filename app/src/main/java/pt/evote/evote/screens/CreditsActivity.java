@@ -1,7 +1,9 @@
-package pt.evote.evote;
+package pt.evote.evote.screens;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import pt.evote.evote.R;
 
 public class CreditsActivity extends AppCompatActivity {
 

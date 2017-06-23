@@ -1,23 +1,23 @@
-package pt.evote.evote;
+package pt.evote.evote.screens;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.widget.TextView;
 import android.widget.Toast;
+
+import pt.evote.evote.R;
+import pt.evote.evote.model.Candidato;
 
 public class CandidatoDetalhesActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class CandidatoDetalhesActivity extends AppCompatActivity {
         Bundle b = this.getIntent().getExtras();
         if (b != null)
             mCandidato = (Candidato) b.getSerializable(CANDIDATO_KEY);
-        else{
+        else {
             errorToast();
         }
 
@@ -214,9 +214,11 @@ public class CandidatoDetalhesActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             //return PlaceholderFragment.newInstance(position + 1);
 
-            switch(position){
-                case 0: return CandidatoDetalhesFragment.newInstance(mCandidato);
-                case 1: return CandidatoCampanhaFragment.newInstance(mCandidato);
+            switch (position) {
+                case 0:
+                    return CandidatoDetalhesFragment.newInstance(mCandidato);
+                case 1:
+                    return CandidatoCampanhaFragment.newInstance(mCandidato);
             }
             return null;
         }

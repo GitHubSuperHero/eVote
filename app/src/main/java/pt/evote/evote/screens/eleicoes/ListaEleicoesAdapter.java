@@ -1,4 +1,4 @@
-package pt.evote.evote;
+package pt.evote.evote.screens.eleicoes;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,13 +13,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import pt.evote.evote.R;
+import pt.evote.evote.model.Eleicao;
+import pt.evote.evote.model.EleicaoCompleta;
+import pt.evote.evote.model.EleicaoSimples;
+import pt.evote.evote.screens.EleicaoCompletaActivity;
+import pt.evote.evote.screens.EleicaoSimplesActivity;
+
 class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.EleicaoHolder> {
 
-    private ArrayList<EleicaoObj> mEleicao;
+    private ArrayList<Eleicao> mEleicao;
 
     static class EleicaoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private EleicaoObj mEleicao;
+        private Eleicao mEleicao;
 
         private TextView mItemName;
         private TextView mItemDate;
@@ -33,7 +40,7 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
             super(v);
 
             mItemName = (TextView) v.findViewById(R.id.textNameView);
-            mItemDate= (TextView) v.findViewById(R.id.textDateView);
+            mItemDate = (TextView) v.findViewById(R.id.textDateView);
             mItemLogo = (ImageView) v.findViewById(R.id.imageLogoView);
 
             mInscrito = (TextView) v.findViewById(R.id.textViewInscrito);
@@ -50,12 +57,11 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
             Bundle b = new Bundle();
             b.putSerializable(ELEICAO_KEY, mEleicao);
 
-            if(mEleicao.getClass() == EleicaoCompleta.class){
-                Intent eleicaoDetalhesIntent = new Intent(context, EleicaoCompletaDetalhes.class);
+            if (mEleicao.getClass() == EleicaoCompleta.class) {
+                Intent eleicaoDetalhesIntent = new Intent(context, EleicaoCompletaActivity.class);
                 eleicaoDetalhesIntent.putExtras(b);
                 context.startActivity(eleicaoDetalhesIntent);
-            }
-            else if(mEleicao.getClass() == EleicaoSimples.class){
+            } else if (mEleicao.getClass() == EleicaoSimples.class) {
                 Intent eleicaoDetalhesIntent = new Intent(context, EleicaoSimplesActivity.class);
                 eleicaoDetalhesIntent.putExtras(b);
                 context.startActivity(eleicaoDetalhesIntent);
@@ -63,19 +69,19 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
 
         }
 
-        void bindEleicao(EleicaoObj eleicao) {
+        void bindEleicao(Eleicao eleicao) {
             mEleicao = eleicao;
             mItemName.setText(mEleicao.getName());
             mItemDate.setText(DateUtils.getRelativeTimeSpanString(mEleicao.getTimeOpen().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS));
 
-            if(mEleicao.isInscrito()){
+            if (mEleicao.isInscrito()) {
                 mInscrito.setVisibility(View.VISIBLE);
             }
             //mItemLogo.setImageURI(p.getImageURI()); //convert string to uri first
         }
     }
 
-    ListaEleicoesAdapter(ArrayList<EleicaoObj> eleicaos) {
+    ListaEleicoesAdapter(ArrayList<Eleicao> eleicaos) {
         mEleicao = eleicaos;
     }
 
@@ -89,7 +95,7 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
 
     @Override
     public void onBindViewHolder(ListaEleicoesAdapter.EleicaoHolder holder, int position) {
-        EleicaoObj itemEleicao = mEleicao.get(position);
+        Eleicao itemEleicao = mEleicao.get(position);
         holder.bindEleicao(itemEleicao);
     }
 
