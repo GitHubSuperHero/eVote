@@ -24,26 +24,26 @@
                 android:id="@+id/imageCandidate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textViewCandidateDescription"
                 android:layout_marginStart="13dp"
+                android:layout_toEndOf="@+id/textViewInscrito"
                 android:contentDescription="@string/logo"
                 android:maxHeight="200dp"
                 android:maxWidth="200dp"
                 android:minHeight="32dp"
                 android:minWidth="32dp"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:layout_alignBottom="@+id/textViewCandidateDescription"
-                android:layout_toEndOf="@+id/textViewInscrito" />
+                app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/textViewCandidateName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="18dp"
+                android:layout_toEndOf="@id/imageCandidate"
                 android:text="@string/textview"
-                android:textColor="@color/colorPrimaryText"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@id/imageCandidate" />
+                android:textColor="@color/colorPrimaryText" />
 
             <TextView
                 android:id="@+id/textViewCandidateDescription"
