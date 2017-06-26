@@ -45,12 +45,12 @@ public class ListasActivity extends AppCompatActivity {
         toolbar.setTitle("Listas");
 
         setSupportActionBar(toolbar);
-    try {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }catch(NullPointerException e){
-        Log.w("Back Button", e.getMessage());
-    }
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        } catch (NullPointerException e) {
+            Log.w("Back Button", e.getMessage());
+        }
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)

@@ -47,7 +47,7 @@
                 android:layout_alignStart="@+id/textDateView"
                 android:layout_below="@+id/textDateView"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:text="Inscrito"
+                android:text="@string/inscrito"
                 android:textColor="@color/colorPrimary"
                 android:textSize="10sp"
                 android:textStyle="italic"
@@ -55,13 +55,13 @@
 
             <ImageView
                 android:id="@+id/imageLogoView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/logo"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:layout_alignBottom="@+id/textDateView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="11dp" />
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/logo"
+                app:srcCompat="@drawable/vote" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
