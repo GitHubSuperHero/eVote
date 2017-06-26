@@ -16,7 +16,7 @@ public abstract class Eleicao implements Serializable, Comparable<Eleicao>, Comp
     private Date timeClose;
     private boolean inscrito;
 
-    private ArrayList<Candidato> listaCandidatos = new ArrayList<>();
+    private ArrayList<Lista> listaLista = new ArrayList<>();
 
     Eleicao(int id, String name, String image, Date timeOpen, Date timeClose) {
         this.setId(id);
@@ -27,9 +27,9 @@ public abstract class Eleicao implements Serializable, Comparable<Eleicao>, Comp
 
         this.setInscrito(false);
 
-        addCandidato(new Candidato("Zé Povinho", "O candidato do povo", ""));
+        addLista(new Lista("Lista A", "A lista do povo", ""));
 
-        addCandidato(new Candidato("Tomão Panela", "O candidato rico", ""));
+        addLista(new Lista("Lista B", "A lista dos ricos", ""));
     }
 
     public String getName() {
@@ -82,16 +82,16 @@ public abstract class Eleicao implements Serializable, Comparable<Eleicao>, Comp
         return o.timeOpen.compareTo(t1.timeOpen);
     }
 
-    public ArrayList<Candidato> getListaCandidatos() {
-        return listaCandidatos;
+    public ArrayList<Lista> getListaLista() {
+        return listaLista;
     }
 
-    public void setListaCandidatos(ArrayList<Candidato> listaCandidatos) {
-        this.listaCandidatos = listaCandidatos;
+    public void setListaLista(ArrayList<Lista> listaLista) {
+        this.listaLista = listaLista;
     }
 
-    public void addCandidato(Candidato candidato) {
-        this.listaCandidatos.add(candidato);
+    public void addLista(Lista lista) {
+        this.listaLista.add(lista);
     }
 
     public Date getTimeOpen() {

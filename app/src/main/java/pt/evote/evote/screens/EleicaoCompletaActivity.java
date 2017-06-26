@@ -98,9 +98,6 @@ public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFr
             case R.id.menu_vote:
                 frag = VoteFragment.newInstance(mEleicao);
                 break;
-            case R.id.menu_user:
-                frag = ProfileFragment.newInstance(myApp.getLoggedInUser());
-                break;
         }
 
         // update selected item

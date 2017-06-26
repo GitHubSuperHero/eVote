@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_noticias"
         android:icon="@drawable/ic_speaker_notes_black_24dp"
-        android:title="@string/forum"
+        android:title="@string/noticias"
         />
 
     <item
@@ -17,9 +17,4 @@
         android:id="@+id/menu_vote"
         android:icon="@drawable/ic_vote"
         android:title="@string/votar" />
-
-    <item
-        android:id="@+id/menu_user"
-        android:icon="@drawable/ic_user"
-        android:title="@string/perfil" />
 </menu>

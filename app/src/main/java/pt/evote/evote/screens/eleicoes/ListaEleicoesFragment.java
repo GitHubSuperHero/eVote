@@ -1,4 +1,4 @@
-package pt.evote.evote.screens.candidatos;
+package pt.evote.evote.screens.eleicoes;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,31 +10,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import pt.evote.evote.R;
-import pt.evote.evote.model.EleicaoCompleta;
+import java.util.ArrayList;
+import java.util.Collections;
 
+import pt.evote.evote.R;
+import pt.evote.evote.eVoteApplication;
+import pt.evote.evote.model.Eleicao;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CandidatosFragment.OnFragmentInteractionListener} interface
+ * {@link ListaEleicoesFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CandidatosFragment#newInstance} factory method to
+ * Use the {@link ListaEleicoesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CandidatosFragment extends Fragment {
-
+public class ListaEleicoesFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM = "param";
+
+
+    // TODO: Rename and change types of parameters
+    private static final int LOGOUT = 2;
+    ArrayList<Eleicao> listEleicao = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
-    private ListaListaAdapter mAdapter;
-
-    private EleicaoCompleta mEleicao;
+    private ListaEleicoesAdapter mAdapter;
+    private eVoteApplication myApplication;
 
     private OnFragmentInteractionListener mListener;
 
-    public CandidatosFragment() {
+    public ListaEleicoesFragment() {
         // Required empty public constructor
     }
 
@@ -42,42 +48,44 @@ public class CandidatosFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param mEleicao Eleicao.
-     * @return A new instance of fragment CandidatosFragment.
+     * @return A new instance of fragment ListaEleicoesFragment.
      */
-    public static CandidatosFragment newInstance(EleicaoCompleta mEleicao) {
-        CandidatosFragment fragment = new CandidatosFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_PARAM, mEleicao);
-        fragment.setArguments(args);
+    // TODO: Rename and change types and number of parameters
+    public static ListaEleicoesFragment newInstance() {
+        ListaEleicoesFragment fragment = new ListaEleicoesFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mEleicao = (EleicaoCompleta) getArguments().getSerializable(ARG_PARAM);
-        }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_candidatos, container, false);
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewCandidatos);
+        View view = inflater.inflate(R.layout.activity_eleicoes, container, false);
+        myApplication = (eVoteApplication) getActivity().getApplication();
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mAdapter = new ListaListaAdapter(mEleicao.getListaLista());
+        mAdapter = new ListaEleicoesAdapter(listEleicao);
         mRecyclerView.setAdapter(mAdapter);
 
         setRecyclerViewScrollListener();
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (listEleicao.size() == 0) {
+            requestEleicoes();
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,20 +112,6 @@ public class CandidatosFragment extends Fragment {
         mListener = null;
     }
 
-    private int getLastVisibleItemPosition() {
-        return mLinearLayoutManager.findLastVisibleItemPosition();
-    }
-
-    private void setRecyclerViewScrollListener() {
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
-            }
-        });
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -128,9 +122,31 @@ public class CandidatosFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+    private int getLastVisibleItemPosition() {
+        return mLinearLayoutManager.findLastVisibleItemPosition();
+    }
+
+    private void setRecyclerViewScrollListener() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
+                if (totalItemCount == getLastVisibleItemPosition() + 1) {
+                    requestEleicoes();
+                }
+            }
+        });
+    }
+
+    private void requestEleicoes() {
+        myApplication.fetchElections(listEleicao);
+        Collections.sort(listEleicao);
+    }
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }
