@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import pt.evote.evote.R;
 import pt.evote.evote.model.Candidato;
-import pt.evote.evote.screens.CandidatoDetalhesActivity;
+import pt.evote.evote.screens.ListasActivity;
 
 public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatosAdapter.CandidatoHolder> {
     private ArrayList<Candidato> mCandidatos;
@@ -47,7 +47,7 @@ public class ListaCandidatosAdapter extends RecyclerView.Adapter<ListaCandidatos
             Bundle b = new Bundle();
             b.putSerializable(CANDIDATO_KEY, mCandidato);
 
-            Intent candidatosIntent = new Intent(context, CandidatoDetalhesActivity.class);
+            Intent candidatosIntent = new Intent(context, ListasActivity.class);
             candidatosIntent.putExtras(b);
             context.startActivity(candidatosIntent);
         }
