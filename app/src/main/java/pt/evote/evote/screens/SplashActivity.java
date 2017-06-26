@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import pt.evote.evote.eVoteApplication;
-import pt.evote.evote.screens.eleicoes.ListaEleicoesActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -39,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         if (myApplication.getLoggedIn()) {
-            Intent intent = new Intent(this, ListaEleicoesActivity.class);
+            Intent intent = new Intent(this, MainMenuActivity.class);
             startActivityForResult(intent, LOGIN);
         } else {
             Intent intent = new Intent(this, MainActivity.class);

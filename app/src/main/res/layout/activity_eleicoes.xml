@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="pt.evote.evote.screens.eleicoes.ListaEleicoesActivity">
+    tools:context="pt.evote.evote.screens.eleicoes.ListaEleicoesFragment">
 
 
     <TextView

@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import pt.evote.evote.R;
 import pt.evote.evote.eVoteApplication;
-import pt.evote.evote.screens.eleicoes.ListaEleicoesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,25 +53,11 @@ public class MainActivity extends AppCompatActivity {
                             ex.getMessage(), Snackbar.LENGTH_SHORT);
                     mySnackbar.show();
                 } finally {
-                    Intent intent = new Intent(c, ListaEleicoesActivity.class);
+                    Intent intent = new Intent(c, MainMenuActivity.class);
                     startActivityForResult(intent, LOGIN);
                 }
             }
         }).start();
-
-
-        /*try {
-            myApplication.logIn(user.toString(), pass.toString());
-        } catch (Exception ex) {
-            Snackbar mySnackbar = Snackbar.make(findViewById(R.id.activity_main),
-                    ex.getMessage(), Snackbar.LENGTH_SHORT);
-            mySnackbar.show();
-
-        }
-        finally {
-            Intent intent = new Intent(c, ListaEleicoesActivity.class);
-            startActivityForResult(intent, LOGIN);
-        }*/
 
     }
 
