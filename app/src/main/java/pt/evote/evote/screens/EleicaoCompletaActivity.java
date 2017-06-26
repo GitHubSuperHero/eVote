@@ -37,12 +37,12 @@ public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFr
         setContentView(R.layout.activity_eleicao_completa_detalhes);
 
         myApp = (eVoteApplication) getApplication();
-    try{
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }catch(NullPointerException e){
-        Log.w("Back Button", e.getMessage());
-    }
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        } catch (NullPointerException e) {
+            Log.w("Back Button", e.getMessage());
+        }
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)

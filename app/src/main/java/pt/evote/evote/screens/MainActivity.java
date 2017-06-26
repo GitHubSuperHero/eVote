@@ -1,5 +1,6 @@
 package pt.evote.evote.screens;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,10 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int LOGIN = 1;
     private static final int LOGOUT = 2;
-
+    TextView user;
+    TextView pass;
+    Context c;
     private eVoteApplication myApplication;
     private ProgressBar progressBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         myApplication = (eVoteApplication) getApplication();
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
+
+        user = (TextView) findViewById(R.id.editUsername);
+        pass = (TextView) findViewById(R.id.editPassword);
+
+        c = this.getApplicationContext();
     }
 
 
@@ -37,23 +44,35 @@ public class MainActivity extends AppCompatActivity {
         progressBar.bringToFront();
         progressBar.setVisibility(View.VISIBLE);
 
-        TextView user;
-        TextView pass;
 
-        user = (TextView) findViewById(R.id.editUsername);
-        pass = (TextView) findViewById(R.id.editPassword);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    myApplication.logIn(user.toString(), pass.toString());
+                } catch (Exception ex) {
+                    Snackbar mySnackbar = Snackbar.make(findViewById(R.id.activity_main),
+                            ex.getMessage(), Snackbar.LENGTH_SHORT);
+                    mySnackbar.show();
+                } finally {
+                    Intent intent = new Intent(c, ListaEleicoesActivity.class);
+                    startActivityForResult(intent, LOGIN);
+                }
+            }
+        }).start();
 
-        try {
+
+        /*try {
             myApplication.logIn(user.toString(), pass.toString());
         } catch (Exception ex) {
             Snackbar mySnackbar = Snackbar.make(findViewById(R.id.activity_main),
                     ex.getMessage(), Snackbar.LENGTH_SHORT);
             mySnackbar.show();
 
-        } finally {
-            Intent intent = new Intent(this, ListaEleicoesActivity.class);
-            startActivityForResult(intent, LOGIN);
         }
+        finally {
+            Intent intent = new Intent(c, ListaEleicoesActivity.class);
+            startActivityForResult(intent, LOGIN);
+        }*/
 
     }
 
