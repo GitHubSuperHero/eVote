@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 import pt.evote.evote.R;
 import pt.evote.evote.model.Candidato;
 
-public class CandidatoDetalhesActivity extends AppCompatActivity {
+public class ListasActivity extends AppCompatActivity {
 
     private static final String CANDIDATO_KEY = "CANDIDATO";
     Candidato mCandidato;
@@ -43,9 +44,15 @@ public class CandidatoDetalhesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_candidato_detalhes);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Detalhes do Candidato");
+        toolbar.setTitle("Listas");
 
         setSupportActionBar(toolbar);
+    try {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }catch(NullPointerException e){
+        Log.w("Back Button", e.getMessage());
+    }
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)
@@ -68,6 +75,11 @@ public class CandidatoDetalhesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import pt.evote.evote.R;
@@ -22,6 +23,13 @@ public class EleicaoSimplesActivity extends AppCompatActivity implements VoteFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleicao_simples);
 
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }catch(NullPointerException e){
+            Log.w("Back Button", e.getMessage());
+        }
+
         Bundle b = this.getIntent().getExtras();
         if (b != null)
             mEleicao = (EleicaoSimples) b.getSerializable(ELEICAO_KEY);
@@ -35,6 +43,12 @@ public class EleicaoSimplesActivity extends AppCompatActivity implements VoteFra
         } else {
             errorToast();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void errorToast() {

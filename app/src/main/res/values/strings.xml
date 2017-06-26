@@ -27,4 +27,6 @@
     <string name="forum">Fórum</string>
     <string name="list">Lista</string>
     <string name="perfil">Perfil</string>
+    <string name="campanha">Campanha</string>
+    <string name="detalhes">Detalhes</string>
 </resources>

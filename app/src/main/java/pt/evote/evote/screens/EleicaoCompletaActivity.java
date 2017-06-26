@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -36,9 +37,12 @@ public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFr
         setContentView(R.layout.activity_eleicao_completa_detalhes);
 
         myApp = (eVoteApplication) getApplication();
-
+    try{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }catch(NullPointerException e){
+        Log.w("Back Button", e.getMessage());
+    }
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)
