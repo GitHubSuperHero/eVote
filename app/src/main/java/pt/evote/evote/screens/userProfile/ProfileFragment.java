@@ -1,40 +1,35 @@
-package pt.evote.evote.screens.candidatos;
+package pt.evote.evote.screens.userProfile;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import pt.evote.evote.R;
-import pt.evote.evote.model.EleicaoCompleta;
-
+import pt.evote.evote.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CandidatosFragment.OnFragmentInteractionListener} interface
+ * {@link ProfileFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CandidatosFragment#newInstance} factory method to
+ * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CandidatosFragment extends Fragment {
-
+public class ProfileFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM = "param";
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
-    private ListaCandidatosAdapter mAdapter;
 
-    private EleicaoCompleta mEleicao;
+    // TODO: Rename and change types of parameters
+    private User mParam;
 
     private OnFragmentInteractionListener mListener;
 
-    public CandidatosFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -42,13 +37,14 @@ public class CandidatosFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param mEleicao Eleicao.
-     * @return A new instance of fragment CandidatosFragment.
+     * @param param User.
+     * @return A new instance of fragment ProfileFragment.
      */
-    public static CandidatosFragment newInstance(EleicaoCompleta mEleicao) {
-        CandidatosFragment fragment = new CandidatosFragment();
+    // TODO: Rename and change types and number of parameters
+    public static ProfileFragment newInstance(User param) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
-        args.putSerializable(ARG_PARAM, mEleicao);
+        args.putSerializable(ARG_PARAM, param);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,27 +53,15 @@ public class CandidatosFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mEleicao = (EleicaoCompleta) getArguments().getSerializable(ARG_PARAM);
+            mParam = (User) getArguments().getSerializable(ARG_PARAM);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_candidatos, container, false);
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewCandidatos);
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
-
-        mAdapter = new ListaCandidatosAdapter(mEleicao.getListaCandidatos());
-        mRecyclerView.setAdapter(mAdapter);
-
-        setRecyclerViewScrollListener();
-
-        return view;
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,20 +88,6 @@ public class CandidatosFragment extends Fragment {
         mListener = null;
     }
 
-    private int getLastVisibleItemPosition() {
-        return mLinearLayoutManager.findLastVisibleItemPosition();
-    }
-
-    private void setRecyclerViewScrollListener() {
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
-            }
-        });
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -132,5 +102,4 @@ public class CandidatosFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }

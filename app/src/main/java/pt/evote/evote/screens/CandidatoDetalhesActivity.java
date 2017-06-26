@@ -21,6 +21,8 @@ import pt.evote.evote.model.Candidato;
 
 public class CandidatoDetalhesActivity extends AppCompatActivity {
 
+    private static final String CANDIDATO_KEY = "CANDIDATO";
+    Candidato mCandidato;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -30,10 +32,6 @@ public class CandidatoDetalhesActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    Candidato mCandidato;
-
-    private static final String CANDIDATO_KEY = "CANDIDATO";
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -46,8 +44,8 @@ public class CandidatoDetalhesActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Detalhes do Candidato");
-        setSupportActionBar(toolbar);
 
+        setSupportActionBar(toolbar);
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)

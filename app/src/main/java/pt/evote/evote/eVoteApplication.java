@@ -14,7 +14,7 @@ import pt.evote.evote.model.User;
 
 public class eVoteApplication extends Application {
 
-    User loggedInUser;
+    private User loggedInUser;
     private Boolean loggedIn = false;
 
     @Override
@@ -115,5 +115,13 @@ public class eVoteApplication extends Application {
 
     private Uri getResourceUri(String name) {
         return Uri.parse("android.resource://" + this.getApplicationContext().getPackageName() + "/drawable/" + name);
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 }

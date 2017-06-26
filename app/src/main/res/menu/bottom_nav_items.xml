@@ -3,18 +3,23 @@
 
     <item
         android:id="@+id/menu_noticias"
-        android:title="@string/menu_noticias"
         android:icon="@drawable/ic_speaker_notes_black_24dp"
+        android:title="@string/forum"
         />
 
     <item
         android:id="@+id/menu_candidatos"
-        android:title="@string/menu_candidados"
         android:icon="@drawable/ic_people_black_24dp"
+        android:title="@string/list"
         />
 
     <item
         android:id="@+id/menu_vote"
-        android:title="@string/votar"
-        android:icon="@drawable/ic_vote" />
+        android:icon="@drawable/ic_vote"
+        android:title="@string/votar" />
+
+    <item
+        android:id="@+id/menu_user"
+        android:icon="@drawable/ic_user"
+        android:title="@string/perfil" />
 </menu>

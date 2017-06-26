@@ -13,25 +13,32 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import pt.evote.evote.R;
+import pt.evote.evote.eVoteApplication;
 import pt.evote.evote.model.EleicaoCompleta;
 import pt.evote.evote.screens.candidatos.CandidatosFragment;
 import pt.evote.evote.screens.noticias.NoticiasFragment;
+import pt.evote.evote.screens.userProfile.ProfileFragment;
 import pt.evote.evote.screens.vote.VoteFragment;
 
 public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
-        NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener {
+        NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
 
     private static final String ELEICAO_KEY = "ELEICAO";
     private static final String SELECTED_ITEM = "arg_selected_item";
     EleicaoCompleta mEleicao;
-
     BottomNavigationView mBottomNav;
+    private eVoteApplication myApp;
     private int mSelectedItem = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleicao_completa_detalhes);
+
+        myApp = (eVoteApplication) getApplication();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)
@@ -63,6 +70,12 @@ public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFr
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(SELECTED_ITEM, mSelectedItem);
         super.onSaveInstanceState(outState);
@@ -80,6 +93,9 @@ public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFr
                 break;
             case R.id.menu_vote:
                 frag = VoteFragment.newInstance(mEleicao);
+                break;
+            case R.id.menu_user:
+                frag = ProfileFragment.newInstance(myApp.getLoggedInUser());
                 break;
         }
 
