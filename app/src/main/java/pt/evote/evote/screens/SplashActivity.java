@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import pt.evote.evote.eVoteApplication;
+import pt.evote.evote.screens.eleicoes.ListaEleicoesActivity;
+
 public class SplashActivity extends AppCompatActivity {
+
+    private static final int LOGIN = 1;
+    private eVoteApplication myApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(this, MainActivity.class);
+
+        myApplication = (eVoteApplication) getApplication();
 
         //Fixed wait time
 
@@ -31,7 +38,14 @@ public class SplashActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        startActivity(intent);
+        if (myApplication.getLoggedIn()) {
+            Intent intent = new Intent(this, ListaEleicoesActivity.class);
+            startActivityForResult(intent, LOGIN);
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
         finish();
     }
 }

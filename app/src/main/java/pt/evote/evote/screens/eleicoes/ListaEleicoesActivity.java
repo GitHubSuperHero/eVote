@@ -6,28 +6,30 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 
 import pt.evote.evote.R;
+import pt.evote.evote.eVoteApplication;
 import pt.evote.evote.model.Eleicao;
-import pt.evote.evote.model.EleicaoCompleta;
-import pt.evote.evote.model.EleicaoSimples;
+
 
 public class ListaEleicoesActivity extends AppCompatActivity {
 
+    private static final int LOGOUT = 2;
     ArrayList<Eleicao> listEleicao = new ArrayList<>();
-
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private ListaEleicoesAdapter mAdapter;
-
-    private static final int LOGOUT = 2;
+    private eVoteApplication myApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleicoes);
+
+        getSupportActionBar().setTitle(R.string.lista_eleicoes);
+
+        myApplication = (eVoteApplication) getApplication();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLinearLayoutManager = new LinearLayoutManager(this);
@@ -66,30 +68,8 @@ public class ListaEleicoesActivity extends AppCompatActivity {
     }
 
     private void requestEleicoes() {
-        Calendar rightNow = Calendar.getInstance();
-        rightNow.set(Calendar.HOUR, 8);
-
-        Calendar close = rightNow;
-        close.add(Calendar.HOUR, 18);
-
-        Eleicao o1 = new EleicaoCompleta(1, "Associação Académica de Coimbra - OAF", "", rightNow.getTime(), close.getTime());
-        o1.setInscrito(true);
-
-        rightNow.add(Calendar.DAY_OF_MONTH, 1);
-        close.add(Calendar.DAY_OF_MONTH, 1);
-        Eleicao o2 = new EleicaoCompleta(2, "Automóvel Clube de Portugal - ACP", "", rightNow.getTime(), close.getTime());
-
-        rightNow.add(Calendar.DAY_OF_MONTH, 7);
-        close.add(Calendar.DAY_OF_MONTH, 7);
-        Eleicao o3 = new EleicaoSimples(3, "Câmara Municipal de Coimbra", "", rightNow.getTime(), close.getTime());
-
-
-        listEleicao.add(o3);
-        listEleicao.add(o2);
-        listEleicao.add(o1);
-
+        myApplication.fetchElections(listEleicao);
         Collections.sort(listEleicao);
-        //TODO: Sort by date
     }
 
 

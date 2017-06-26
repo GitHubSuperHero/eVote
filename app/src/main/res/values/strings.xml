@@ -23,4 +23,5 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="erro_dados_campanha">Erro ao receber dados da campanha!</string>
+    <string name="lista_eleicoes">Lista de Eleições</string>
 </resources>

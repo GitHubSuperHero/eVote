@@ -104,21 +104,6 @@ public class NoticiasFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
     private int getLastVisibleItemPosition() {
         return mLinearLayoutManager.findLastVisibleItemPosition();
     }
@@ -141,7 +126,22 @@ public class NoticiasFragment extends Fragment {
         //Check for more news.... In this example we add another copy of this one
         mEleicao.addNoticia(new Noticia("Trump did more things",
                 "He did yet another bad thing... But is there still anyone that didn't expect that?",
-                "sapo.pt", "www.sapo.pt", "17/06/2017", ""));
+                "sapo.pt", "www.sapo.pt", "17/06/2017", null));
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 
 }
