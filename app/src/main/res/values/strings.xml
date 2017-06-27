@@ -29,4 +29,8 @@
     <string name="campanha">Campanha</string>
     <string name="detalhes">Detalhes</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="inscrito">Inscrito</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="source">Source</string>
 </resources>

@@ -2,6 +2,7 @@ package pt.evote.evote.screens.eleicoes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -24,17 +25,36 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
 
     private ArrayList<Eleicao> mEleicao;
 
+    ListaEleicoesAdapter(ArrayList<Eleicao> eleicaos) {
+        mEleicao = eleicaos;
+    }
+
+    @Override
+    public ListaEleicoesAdapter.EleicaoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View inflatedView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.row_eleicao, parent, false);
+        return new EleicaoHolder(inflatedView);
+    }
+
+    @Override
+    public void onBindViewHolder(ListaEleicoesAdapter.EleicaoHolder holder, int position) {
+        Eleicao itemEleicao = mEleicao.get(position);
+        holder.bindEleicao(itemEleicao);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mEleicao.size();
+    }
+
     static class EleicaoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private static final String ELEICAO_KEY = "ELEICAO";
         private Eleicao mEleicao;
-
         private TextView mItemName;
         private TextView mItemDate;
         private ImageView mItemLogo;
-
         private TextView mInscrito;
-
-        private static final String ELEICAO_KEY = "ELEICAO";
 
         EleicaoHolder(View v) {
             super(v);
@@ -74,33 +94,13 @@ class ListaEleicoesAdapter extends RecyclerView.Adapter<ListaEleicoesAdapter.Ele
             mItemName.setText(mEleicao.getName());
             mItemDate.setText(DateUtils.getRelativeTimeSpanString(mEleicao.getTimeOpen().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS));
 
+            if (mEleicao.getImageURI() != null && !mEleicao.getImageURI().isEmpty()) {
+                mItemLogo.setImageURI(Uri.parse(mEleicao.getImageURI()));
+            }
             if (mEleicao.isInscrito()) {
                 mInscrito.setVisibility(View.VISIBLE);
             }
             //mItemLogo.setImageURI(p.getImageURI()); //convert string to uri first
         }
-    }
-
-    ListaEleicoesAdapter(ArrayList<Eleicao> eleicaos) {
-        mEleicao = eleicaos;
-    }
-
-    @Override
-    public ListaEleicoesAdapter.EleicaoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflatedView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_eleicao, parent, false);
-        return new EleicaoHolder(inflatedView);
-    }
-
-
-    @Override
-    public void onBindViewHolder(ListaEleicoesAdapter.EleicaoHolder holder, int position) {
-        Eleicao itemEleicao = mEleicao.get(position);
-        holder.bindEleicao(itemEleicao);
-    }
-
-    @Override
-    public int getItemCount() {
-        return mEleicao.size();
     }
 }
