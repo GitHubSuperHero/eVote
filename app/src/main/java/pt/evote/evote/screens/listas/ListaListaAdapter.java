@@ -1,4 +1,4 @@
-package pt.evote.evote.screens.candidatos;
+package pt.evote.evote.screens.listas;
 
 import android.content.Context;
 import android.content.Intent;
