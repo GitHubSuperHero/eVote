@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/AppTheme"
-    tools:context="pt.evote.evote.screens.candidatos.CandidatosFragment">
+    tools:context="pt.evote.evote.screens.listas.ListaFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewCandidatos"
+        android:id="@+id/recyclerViewListas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />

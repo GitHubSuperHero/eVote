@@ -16,12 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import pt.evote.evote.R;
-import pt.evote.evote.model.Candidato;
+import pt.evote.evote.model.Lista;
 
 public class ListasActivity extends AppCompatActivity {
 
-    private static final String CANDIDATO_KEY = "CANDIDATO";
-    Candidato mCandidato;
+    private static final String LISTA_KEY = "LISTA";
+    Lista mLista;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -39,7 +39,7 @@ public class ListasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_candidato_detalhes);
+        setContentView(R.layout.activity_lista_candidatos);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Listas");
@@ -54,7 +54,7 @@ public class ListasActivity extends AppCompatActivity {
 
         Bundle b = this.getIntent().getExtras();
         if (b != null)
-            mCandidato = (Candidato) b.getSerializable(CANDIDATO_KEY);
+            mLista = (Lista) b.getSerializable(LISTA_KEY);
         else {
             errorToast();
         }
@@ -62,7 +62,7 @@ public class ListasActivity extends AppCompatActivity {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), mCandidato);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), mLista);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -93,25 +93,25 @@ public class ListasActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class CandidatoDetalhesFragment extends Fragment {
+    public static class ListaCandidatosFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String CANDIDATO_KEY = "CANDIDATO";
-        Candidato mCandidato;
+        private static final String LISTA_KEY = "LISTA";
+        Lista mLista;
 
-        public CandidatoDetalhesFragment() {
+        public ListaCandidatosFragment() {
         }
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static CandidatoDetalhesFragment newInstance(Candidato mCandidato) {
-            CandidatoDetalhesFragment fragment = new CandidatoDetalhesFragment();
+        public static ListaCandidatosFragment newInstance(Lista mLista) {
+            ListaCandidatosFragment fragment = new ListaCandidatosFragment();
             Bundle args = new Bundle();
-            args.putSerializable(CANDIDATO_KEY, mCandidato);
+            args.putSerializable(LISTA_KEY, mLista);
             fragment.setArguments(args);
             return fragment;
         }
@@ -120,14 +120,14 @@ public class ListasActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             if (getArguments() != null) {
-                mCandidato = (Candidato) getArguments().getSerializable(CANDIDATO_KEY);
+                mLista = (Lista) getArguments().getSerializable(LISTA_KEY);
             }
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_candidato_detalhes, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_lista_detalhes, container, false);
 
             //TODO: Populate layout
 
@@ -138,25 +138,25 @@ public class ListasActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class CandidatoCampanhaFragment extends Fragment {
+    public static class ListaCampanhaFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String CANDIDATO_KEY = "CANDIDATO";
-        Candidato mCandidato;
+        private static final String LISTA_KEY = "LISTA";
+        Lista mLista;
 
-        public CandidatoCampanhaFragment() {
+        public ListaCampanhaFragment() {
         }
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static CandidatoCampanhaFragment newInstance(Candidato mCandidato) {
-            CandidatoCampanhaFragment fragment = new CandidatoCampanhaFragment();
+        public static ListaCampanhaFragment newInstance(Lista mLista) {
+            ListaCampanhaFragment fragment = new ListaCampanhaFragment();
             Bundle args = new Bundle();
-            args.putSerializable(CANDIDATO_KEY, mCandidato);
+            args.putSerializable(LISTA_KEY, mLista);
             fragment.setArguments(args);
             return fragment;
         }
@@ -165,14 +165,14 @@ public class ListasActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             if (getArguments() != null) {
-                mCandidato = (Candidato) getArguments().getSerializable(CANDIDATO_KEY);
+                mLista = (Lista) getArguments().getSerializable(LISTA_KEY);
             }
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_candidato_campanha, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_lista_campanha, container, false);
 
             //TODO: Populate layout
 
@@ -186,12 +186,12 @@ public class ListasActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        Candidato mCandidato;
+        Lista mLista;
 
-        public SectionsPagerAdapter(FragmentManager fm, Candidato mCandidato) {
+        public SectionsPagerAdapter(FragmentManager fm, Lista mLista) {
             super(fm);
 
-            this.mCandidato = mCandidato;
+            this.mLista = mLista;
         }
 
         @Override
@@ -202,9 +202,9 @@ public class ListasActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    return CandidatoDetalhesFragment.newInstance(mCandidato);
+                    return ListaCandidatosFragment.newInstance(mLista);
                 case 1:
-                    return CandidatoCampanhaFragment.newInstance(mCandidato);
+                    return ListaCampanhaFragment.newInstance(mLista);
             }
             return null;
         }
@@ -218,7 +218,7 @@ public class ListasActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Candidato";
+                    return "Candidatos";
                 case 1:
                     return "Campanha";
             }

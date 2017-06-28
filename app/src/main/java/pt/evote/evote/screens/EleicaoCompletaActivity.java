@@ -16,13 +16,13 @@ import android.widget.Toast;
 import pt.evote.evote.R;
 import pt.evote.evote.eVoteApplication;
 import pt.evote.evote.model.EleicaoCompleta;
-import pt.evote.evote.screens.candidatos.CandidatosFragment;
+import pt.evote.evote.screens.listas.ListaFragment;
 import pt.evote.evote.screens.noticias.NoticiasFragment;
 import pt.evote.evote.screens.userProfile.ProfileFragment;
 import pt.evote.evote.screens.vote.VoteFragment;
 
 public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFragment.OnFragmentInteractionListener,
-        NoticiasFragment.OnFragmentInteractionListener, CandidatosFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
+        NoticiasFragment.OnFragmentInteractionListener, ListaFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
 
     private static final String ELEICAO_KEY = "ELEICAO";
     private static final String SELECTED_ITEM = "arg_selected_item";
@@ -93,7 +93,7 @@ public class EleicaoCompletaActivity extends AppCompatActivity implements VoteFr
                 frag = NoticiasFragment.newInstance(mEleicao);
                 break;
             case R.id.menu_candidatos:
-                frag = CandidatosFragment.newInstance(mEleicao);
+                frag = ListaFragment.newInstance(mEleicao);
                 break;
             case R.id.menu_vote:
                 frag = VoteFragment.newInstance(mEleicao);
